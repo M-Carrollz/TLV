@@ -42,22 +42,17 @@ define IcerbergSecurity_flag1 = False
 #------------------------------------------------------------------------------------------------------------
 
 label start:
-
-    # Show a background. This uses a placeholder by default, but you can
-    # add a file (named either "bg room.png" or "bg room.jpg") to the
-    # images directory to show it.
-
-    #scene bg room
-
-    # This shows a character sprite. A placeholder is used, but you can
-    # replace it by adding a file named "eileen happy.png" to the images
-    # directory.
-
-    #show eileen happy
-
+    scene black
+    pause 1.0
     Nar "It's been two years..."
+    scene bg_gothamclocktower_batsignal_off_a01
+    with dissolve
+    pause 0.5
+    with dissolve
     Nar "Two years since I return from exhile..."
     Nar "Two years in my fight to clean up the streets of Gotham."
+
+    scene bg_gothamclocktowerinsert_batsignal_off_a01
 
     Nar "I set out to end organised crime in the city, and over a year ago the first crime family was dismantled."
     Nar "Once one syndicate had been toppled, the rest fell like dominoes."
@@ -74,18 +69,54 @@ label start:
     Nar "But then I remember: only in the dark can you see true light shine."
     Nar "The police corruption is now over with Gordon as commissioner and Havery Dent as the newly elected DA." 
     Nar "Criminals now have more to fear than what lies in the shadows."
+    scene bg_gothamclocktowerinsert_batsignal_on_a01
     Nar "Gotham is fighting back!"
+    #scene 
     "{i}The Clock Strikes Midnight."
+    #scene bg_gothamclocktowerinsert_batsignal_on_a01
     Nar "February 13th, Valentine's Eve."
 
+    scene black
+    with dissolve
+    pause 0.5
+    scene bg_titlepage_001_a01
+    with dissolve
+    pause 0.5
+    scene bg_titlepage_002_a01
+    with dissolve
+    pause 2.0
+    scene black
+    with dissolve
+    pause 0.5
+
+    scene bg_pawnshop_a03
+    with dissolve
+    "{i}Rain pours on the gotham city streets."
+    scene bg_pawnshop_gnn_a01
+    with dissolve
+    pause 0.5
+    scene bg_pawnshop_breakingnews_a01
+    "{i}\*Jingle Plays on TV\*"
+    "GNN Breaking News!"
+    
+    scene bg_gnn_001_a01
+
     GNN "Breaking News this hour."
-    GNN "GCPD is reporting the first fatality from the new party drug \"Love Dust\" that has recently flooded Lower Gotham in the lead up to Valentine's Day."
-    GNN "The drug is said to send users into an uncontrollable lust in which the user will either submit to any whim of their partner or a predatory state."
-    GNN "Love Dust has been directly linked to the recent spike in sex-based crime across the city."
+    scene bg_gnn_lustdust_001_a01
+    GNN "GCPD is reporting the first fatality from the new party drug \"Lust Dust\" that has recently flooded Lower Gotham in the lead up to Valentine's Day."
+    GNN "The drug is said to send users into an uncontrollable lust in which the user will either submit to any whim of their partner or send them into a predatory state."
+    GNN "Lust Dust has been directly linked to the recent spike in sex-based crime across the city."
     GNN "GCPD has yet to comment on the nature of the fatality that took place at the East End Motel just a few hours ago, other than to link the death to the drug."
+    scene bg_gnn_001_a01
     GNN "We reached out to GCPD and the Office of the Mayor for comment but they have declined to comment on an ongoing investigation."
 
+label StartPart2:
+    scene bg_gothamclocktowerinsert_batsignal_on_a01
+    with dissolve
+    Bat "My city needs me..."
+
 label MapChoice1:
+    scene black
     menu:
         "Meet Gordon at the East End Motel":
             jump EastEndMotel
@@ -111,7 +142,7 @@ label EastEndMotelDiscussion:
 
     Gor "Thanks for coming."
     Gor "Hamilton Hill, The disgraced former Mayor."
-    Gor "The intial Corner Report says that he overdose on Love dust." 
+    Gor "The intial Corner Report says that he overdose on Lust dust." 
     Gor "His heart gave out having sex."
     Mar "What a way to go! Getting fucked to death..."
     Mar "Better than that corrupt attempted cop killer deserved!"
@@ -123,7 +154,7 @@ label EastEndMotelDiscussion:
 
     "Batman nods, before taking in the room, searching it for clues or evidence."
 
-    Nar "Crushed Love Dust tablets. Looks like these were crushed by someone who knew what they were doing..." 
+    Nar "Crushed Lust Dust tablets. Looks like these were crushed by someone who knew what they were doing..." 
     Nar "...with Hamilton Hill running on an anti-drug platform it seems like the mysterious sexual parter might have broken them up."
     Nar "Shame they were all broken up, we still don't know what the uncrushed tablets look like." 
     Nar "Other than that they seem to come in a variety of different bright colours..."
@@ -145,7 +176,7 @@ label MotelRenactment:
     Nar "I think I've peiced together what happened here..."
     Nar "It looks like the unknown woman seduced Hamilton at the Iceberg Lounge..."
     Nar "Then they came back here."
-    Nar "She cut up the Love Dust and gave him a lethal dose."
+    Nar "She cut up the Lust Dust and gave him a lethal dose."
     Nar "She stradled him and started kissing his neck."
     Nar "then she worked her way down his chest."
     Nar "she kissed and licked his shaft."
@@ -186,7 +217,7 @@ label MapChoice2Discussion:
 
     Nar "The matchbox is from the Iceberg Lounge. I should take a visit... "
     Nar "Although something about that matchbox doesn't fit the crime, it felt out of place... like it was staged."
-    Nar "I should swing by Wayne Tower, see if Lucius is able to find out more about Love Dust from the sample I gathered from the Motel."
+    Nar "I should swing by Wayne Tower, see if Lucius is able to find out more about Lust Dust from the sample I gathered from the Motel."
     Nar "I could also go see Alfred and get him to pour over the logs. He might be able to see if any of this matches the MO of someone I've already come up against."
 
 label MapChoice2:
