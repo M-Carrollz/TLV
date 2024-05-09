@@ -39,21 +39,34 @@ define IcebergLobby_flag1 = False
 define IcerbergSecurity_flag1 = False
 
 #------------------------------------------------------------------------------------------------------------
+
+image fg_rain:
+    "rain_001_b01"
+    pause 0.1
+    "rain_002_b01"
+    pause 0.1
+    "rain_003_b01"
+    pause 0.1
+    "rain_004_b01"
+    pause 0.1
+    repeat
+
+#------------------------------------------------------------------------------------------------------------
 #------------------------------------------------------------------------------------------------------------
 
 label start:
     scene black
     pause 1.0
     Nar "It's been two years..."
+    pause 1.5
     scene bg_gothamclocktower_batsignal_off_a01
-    with dissolve
-    pause 0.5
+    show fg_rain
     with dissolve
     Nar "Two years since I return from exhile..."
     Nar "Two years in my fight to clean up the streets of Gotham."
 
     scene bg_gothamclocktowerinsert_batsignal_off_a01
-
+    show fg_rain
     Nar "I set out to end organised crime in the city, and over a year ago the first crime family was dismantled."
     Nar "Once one syndicate had been toppled, the rest fell like dominoes."
     Nar "One, after another, the crime bosses felt the same fear they'd inflicted on the city for decades."
@@ -70,6 +83,7 @@ label start:
     Nar "The police corruption is now over with Gordon as commissioner and Havery Dent as the newly elected DA." 
     Nar "Criminals now have more to fear than what lies in the shadows."
     scene bg_gothamclocktowerinsert_batsignal_on_a01
+    show fg_rain
     Nar "Gotham is fighting back!"
     #scene 
     "{i}The Clock Strikes Midnight."
@@ -90,12 +104,15 @@ label start:
     pause 0.5
 
     scene bg_pawnshop_a03
+    show fg_rain
     with dissolve
     "{i}Rain pours on the gotham city streets."
     scene bg_pawnshop_gnn_a01
+    show fg_rain
     with dissolve
     pause 0.5
     scene bg_pawnshop_breakingnews_a01
+    show fg_rain
     "{i}\*Jingle Plays on TV\*"
     "GNN Breaking News!"
     
@@ -112,6 +129,7 @@ label start:
 
 label StartPart2:
     scene bg_gothamclocktowerinsert_batsignal_on_a01
+    show fg_rain
     with dissolve
     Bat "My city needs me..."
 
@@ -125,6 +143,7 @@ label MapChoice1:
 
 label GCPDHQ1:
     scene bg_gcpd_batsignal_on_a01
+    show fg_rain
     Bat "No-one's here. I should meet Gordon at the crime scene in East End."
     jump MapChoice1
 
@@ -247,6 +266,7 @@ label MapChoice2:
 
 label GCPDHQ2:
     scene bg_gcpd_batsignal_off_a01
+    show fg_rain
     Bat "Noone's here. I should follow up on my other leads."
     if Matchbook_flag:
         jump MapChoice3
