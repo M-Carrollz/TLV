@@ -1,6 +1,6 @@
 ﻿# Characters
 
-define Nar = Character("Batman", color="#3e3636")
+define Nar = Character("{i}Batman (Internal Monologue)")
 define Bat = Character("Batman")
 define Bru = Character("Bruce Wayne")
 define Fox = Character("Lucius Fox")
@@ -41,13 +41,13 @@ define IcerbergSecurity_flag1 = False
 #------------------------------------------------------------------------------------------------------------
 
 image fg_rain:
-    "rain_001_b01"
+    "rain_001_a01"
     pause 0.1
-    "rain_002_b01"
+    "rain_002_a01"
     pause 0.1
-    "rain_003_b01"
+    "rain_003_a01"
     pause 0.1
-    "rain_004_b01"
+    "rain_004_a01"
     pause 0.1
     repeat
 
@@ -73,21 +73,21 @@ label start:
     Nar "Carmine Falcone, Salvatore Maroni, Carl Grissom, Tony Zucco... They're all in Blackgate now."
 
     Nar "Taking them down has left my body beaten and bruised."
-    Nar "Venom, the toxic adrenaline concotion used by Bane has become a crutch of mine to keep in the crime-fighting game."
+    Nar "Venom, the toxic adrenaline concotion used by Bane, that I once used only as a last resort, has now become a crutch of mine to keep me in the crime-fighting game."
     Nar "And everytime a mob boss fell, someone worse took their place."
     Nar "Now Cobblepot and Sionis run the organised crime in the Greater Gotham Area..."
-    Nar "But the goons and thugs of the fallen crime bosses now for violent criminals like the Joker."
+    Nar "But the goons and thugs of the fallen crime bosses now run with violent criminals like the Joker."
 
     Nar "Sometimes I wonder if what I'm doing is actually helping the people of Gotham... or just bringing them more darkness..."
     Nar "But then I remember: only in the dark can you see true light shine."
     Nar "The police corruption is now over with Gordon as commissioner and Havery Dent as the newly elected DA." 
     Nar "Criminals now have more to fear than what lies in the shadows."
-    scene bg_gothamclocktowerinsert_batsignal_on_a01
-    show fg_rain
+    
     Nar "Gotham is fighting back!"
-    #scene 
+    
+    scene bg_gothamclocktowermidnight_a01
+    show fg_rain
     "{i}The Clock Strikes Midnight."
-    #scene bg_gothamclocktowerinsert_batsignal_on_a01
     Nar "February 13th, Valentine's Eve."
 
     scene black
@@ -113,7 +113,7 @@ label start:
     pause 0.5
     scene bg_pawnshop_breakingnews_a01
     show fg_rain
-    "{i}\*Jingle Plays on TV\*"
+    "{i}\*Jingle plays on TV\*"
     "GNN Breaking News!"
     
     scene bg_gnn_001_a01
@@ -128,6 +128,8 @@ label start:
     GNN "We reached out to GCPD and the Office of the Mayor for comment but they have declined to comment on an ongoing investigation."
 
 label StartPart2:
+    scene bg_gothamclocktowerinsert_batsignal_off_a01
+    pause 0.5
     scene bg_gothamclocktowerinsert_batsignal_on_a01
     show fg_rain
     with dissolve
@@ -267,7 +269,7 @@ label MapChoice2:
 label GCPDHQ2:
     scene bg_gcpd_batsignal_off_a01
     show fg_rain
-    Bat "Noone's here. I should follow up on my other leads."
+    Bat "No-one's here. I should follow up on my other leads."
     if Matchbook_flag:
         jump MapChoice3
     else:
@@ -441,7 +443,7 @@ label BlackgateSalvatore:
     Sal "{i}She moaned for me... it sounded incredibly sexy."
     Sal "{i}I can not understate how sexy her moan sounded... it drove me wild!"
    
-    #Addvmore detials
+    #Add more detials
     # Sal "{i}" 
 
     Sal "{i}She moaned in a really high pitched squeal as we were both getting close..."
