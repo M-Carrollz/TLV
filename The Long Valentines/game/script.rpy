@@ -30,6 +30,12 @@ define Thu = Character("Thug")
 
 #Flags
 define Motel_flag = False
+define Detective_Motel1 = False
+define Detective_Motel2 = False
+define Detective_Motel3 = False
+define Detective_Motel4 = False
+define Detective_Motel5 = False
+
 define Matchbook_flag = False
 
 define Alfred_flag1 = False
@@ -50,6 +56,73 @@ image fg_rain:
     "rain_004_a01"
     pause 0.1
     repeat
+
+#------------------------------------------------------------------------------------------------------------
+# Screens
+#------------------------------------------------------------------------------------------------------------
+
+screen EastEndMotel_Screen:
+    imagebutton:
+        xanchor 0.5
+        yanchor 0.5
+        xpos 0.5805
+        ypos 0.722
+        idle "motelmatchbook_idle"
+        hover "motelmatchbook_hover"
+        action Jump("EEMotelMatchbook")
+
+        #hovered Show("displayTextScreen",
+        #    displayText = "Examine matchbook")
+        #unhovered Hide("displayTextScreen")
+    imagebutton:
+        xanchor 0.5
+        yanchor 0.5
+        xpos 0.5095
+        ypos 0.718
+        idle "motellustdust_idle"
+        hover "motellustdust_hover"
+        action Jump("EEMotelLustDust")
+        
+        #hovered Show("displayTextScreen",
+        #    displayText = "Examine lines of drugs")
+        #unhovered Hide("displayTextScreen")
+    imagebutton:
+        xanchor 0.5
+        yanchor 0.5
+        xpos 0.2418
+        ypos 0.835
+        idle "motelcum_idle"
+        hover "motelcum_hover"
+        action Jump("EEMotelCum")
+        
+        #hovered Show("displayTextScreen",
+        #    displayText = "Examine fluid trail")
+        #unhovered Hide("displayTextScreen")
+    imagebutton:
+        xanchor 0.5
+        yanchor 0.5
+        xpos 0.58218
+        ypos 0.58785
+        idle "motelhamiltonhilldead_idle"
+        hover "motelhamiltonhilldead_hover"
+        action Jump("EEMotelBody")
+        
+        #hovered Show("displayTextScreen",
+        #    displayText = "Examine corpse")
+        #unhovered Hide("displayTextScreen")
+    imagebutton:
+        xanchor 0.5
+        yanchor 0.5
+        xpos 0.6693
+        ypos 0.466
+        idle "motelwallet_idle"
+        hover "motelwallet_hover"
+        action Jump("EEMotelWallet")
+        
+        #hovered Show("displayTextScreen",
+        #    displayText = "Examine wallet")
+        #unhovered Hide("displayTextScreen")
+
 
 #------------------------------------------------------------------------------------------------------------
 #------------------------------------------------------------------------------------------------------------
@@ -161,6 +234,8 @@ label EastEndMotelDiscussion:
     Mar "Gordon!"
     Mar "He's through here..."
 
+    scene bg_eastendmotel_001_a01
+
     Gor "Thanks for coming."
     Gor "Hamilton Hill, The disgraced former Mayor."
     Gor "The intial Corner Report says that he overdose on Lust dust." 
@@ -174,22 +249,63 @@ label EastEndMotelDiscussion:
     Gor "Rented out in the name of \"Cash\"."
 
     "Batman nods, before taking in the room, searching it for clues or evidence."
+    
 
+label EastEndMotel_Detective:
+    if Detective_Motel1:
+        if Detective_Motel2:
+            if Detective_Motel3:
+                if Detective_Motel4:
+                    if Detective_Motel5:
+                        jump MotelRenactment
+                    else: 
+                        jump EastEndMotel_Detective2
+                else: 
+                    jump EastEndMotel_Detective2
+            else: 
+                jump EastEndMotel_Detective2
+        else: 
+            jump EastEndMotel_Detective2
+    else: 
+        jump EastEndMotel_Detective2
+
+    
+label EastEndMotel_Detective2:
+    call screen EastEndMotel_Screen
+
+label EEMotelLustDust:
     Nar "Crushed Lust Dust tablets. Looks like these were crushed by someone who knew what they were doing..." 
     Nar "...with Hamilton Hill running on an anti-drug platform it seems like the mysterious sexual parter might have broken them up."
     Nar "Shame they were all broken up, we still don't know what the uncrushed tablets look like." 
     Nar "Other than that they seem to come in a variety of different bright colours..."
     Nar "I'll have to get this test, might be able to trace the ingredients to find the source."
+    $ Detective_Motel1 = True
+    jump EastEndMotel_Detective
 
+label EEMotelBody:
     Nar "Lipstick marks on the shirt collar, neck..."
     Nar "and all over the base of gentials."
     Nar "It looks like the mysterious woman was the instigator."
+    $ Detective_Motel2 = True
+    jump EastEndMotel_Detective
 
+label EEMotelCum:
     Nar "The trail of semen looks like he came inside her whilst dying."
     Nar "Seems like she wasn't panicked or in a rush at all..."
+    $ Detective_Motel3 = True
+    jump EastEndMotel_Detective
+
+label EEMotelWallet:
+    Nar "Wallet is still here and is full of cash..."
+    Nar "That rules out a robbery gone wrong, and suggests that our mysterious woman isn't a lady of the night."
+    $ Detective_Motel4 = True
+    jump EastEndMotel_Detective
     
+label EEMotelMatchbook:
     Nar "A Matchbook. This feels out of place, like it was planted."
     Nar "Iceberg Lounge. I'll have to take a visit."
+    $ Detective_Motel5 = True
+    jump EastEndMotel_Detective
 
 label MotelRenactment:
     scene black 
@@ -219,7 +335,7 @@ label MotelRenactment:
         jump EastEndMotelContinued
 
 label EastEndMotelContinued:
-    scene black 
+    scene bg_eastendmotel_001_a01
 
     Bat "Looks like we're searching for a femme fatale, this seems like it might have been orchestrated."
     Gor "Are you saying... this is murder?"
