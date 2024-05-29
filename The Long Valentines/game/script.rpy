@@ -123,6 +123,10 @@ screen EastEndMotel_Screen:
         #    displayText = "Examine wallet")
         #unhovered Hide("displayTextScreen")
 
+#------------------------------------------------------------------------------------------------------------
+
+#screen Map_Screen:
+
 
 #------------------------------------------------------------------------------------------------------------
 #------------------------------------------------------------------------------------------------------------
@@ -209,7 +213,7 @@ label StartPart2:
     Bat "My city needs me..."
 
 label MapChoice1:
-    scene black
+    scene bg_mapscreen_a01
     menu:
         "Meet Gordon at the East End Motel":
             jump EastEndMotel
@@ -358,6 +362,7 @@ label MapChoice2Discussion:
     Nar "I could also go see Alfred and get him to pour over the logs. He might be able to see if any of this matches the MO of someone I've already come up against."
 
 label MapChoice2:
+    scene bg_mapscreen_a01
     menu:
         "Visit GCPD HQ":
             jump GCPDHQ2
