@@ -19,12 +19,17 @@ define Jam = Character("Jamie")
 
 define Tea = Character ("Teacher")
 
+# ----------------------------------------------------------------- Character Stats -----------------------------------------------------------------
+
+init:
+    $ Bec_Lust = 0
+    $ Bec_Affection = 0
+
+
 # ------------------------------------------------------------------- Flags -------------------------------------------------------------------
 
 define Bec1_Flag = False
-define Bec2_Flag = True
-define Bex1_Flag = False
-define Bex2_Flag = False
+define Bec2_Flag = False
 define BecSecret1_Flag = False
 
 
@@ -103,8 +108,9 @@ label Day1MorningFlirt:
     Bec "Otherwise you'd get me in trouble with Dan."
     PC "...and we wouldn't want that."
     "We both smile knowing that we shouldn't be saying these things but in our playfullness we've always stopped short of some imaginary second boundry that keeps her relationship unsullied."
-    $ Bec1_Flag = True
     #Lust and Affection are both Increased
+    $ Bec_Lust += 1
+    $ Bec_Affection += 1
     jump Day1SchoolMorningCont
 
 label Day1MorningGoodGuy:
@@ -114,6 +120,7 @@ label Day1MorningGoodGuy:
     PC "Can't go around not knowing how you are each day... that'd be crazy!"
     "We both laugh and smile"
     #Affection is Increased
+    $ Bec_Affection += 1
 
 label Day1SchoolMorningCont:
     PC "How was your time off?"
@@ -123,7 +130,7 @@ label Day1SchoolMorningCont:
     Bec "Ohh and I saw Katie a few times."
     PC "Ohh I saw Katie a couple times over the break as well!"
     Bec "Yeah she told me she'd seen you a bit."
-    if Bec1_Flag:
+    if Bec_Lust >= 1:
         Bec "You really do have a thing for girls that are off limits huh?"
         jump Day1SchoolMorningFlirt
     else:
@@ -143,6 +150,8 @@ label Day1SchoolMorningFlirt:
     PC "Well... if that's the case, I better keep at the challenge I've been set."
     Bec "Please do."
     #Lust and Affection are both Increased
+    $ Bec_Lust += 1
+    $ Bec_Affection += 1
     
 label Day1SchoolMorningCont2:
     "We pause for a moment of comfortable silence."
@@ -159,7 +168,9 @@ label Day1SchoolMorningCont2:
             PC "I'll do my best."
             "We smile enjoying our little fantasy."
             PC "But I do actually want to know, he's a part of your life afterall. So how are things?"
-            $ Bec1_Flag = True
+            #Lust and Affection are both Increased
+            $ Bec_Lust += 1
+            $ Bec_Affection += 1
             jump Day1SchoolMorningCont3
 
 label Day1SchoolMorningCont3:
@@ -172,6 +183,8 @@ label Day1SchoolMorningCont3:
             Bec "Haha. I bet you can."
             $ BecSecret1_Flag = True
             #Lust And Affection are Increased
+            $ Bec_Lust += 1
+            $ Bec_Affection += 1
     Bec "Anyway he's been kinda pestering me for sex lately..."
     Bec "...and I know we've been dating for ages now... but, I dunno, every time he brings it up he seems like an excited puppy about to play with a new toy..."
     Bec "He doesn't seem like he cares to make it something I want to do... and I don't want to give my virginity to someone as a present or an obligation to them..."
@@ -179,8 +192,8 @@ label Day1SchoolMorningCont3:
     Bec "Does that make sense?"
 
 label Day1SchoolMorningSexTalk:
-    if Bex1_Flag:
-        if Bex2_Flag:
+    if Bec1_Flag:
+        if Bec2_Flag:
             jump Day1SchoolMorningEnd
         else:
             jump Day1SchoolMorningSexTalkCont
@@ -196,25 +209,27 @@ label Day1SchoolMorningSexTalkCont:
             Bec "That's exactly how I feel!"
             Bec "Dan doesn't get it... He makes it seem like I'm being a bad girlfriend when I deny him sex that I'm not interested in."
             PC "That's awful... and manipulative!"
-            if Bec1_Flag:
+            if Bec_Lust >= 1:
                 PC "and look... I know that's coming from me flirting with you when you're dating Dan, It's an asshole act and I know it. I'd stop if you ever asked me to..." 
                 "She smiles and laughs."
                 PC "But you gotta make him realise that he's not guaranteed sex just because he's dating you!"
                 Bec "I know..."
                 #Affection is Increased
+                $ Bec_Affection += 1
                 jump Day1SchoolMorningSexTalk
             else:
                 PC "You gotta make him realise that he's not guaranteed sex just because he's dating you!"
                 Bec "I know..."
                 #affection is increased
+                $ Bec_Affection += 1
                 jump Day1SchoolMorningSexTalk
 
         "I don't get where his heads at.":
             PC "I don't get where his heads at."
             PC "That's never going to get you in the mood."
             Bec "Right!?"
-            $ Bex1_Flag = True
-            if Bec1_Flag:
+            $ Bec1_Flag = True
+            if Bec_Lust >= 3:
                     PC "Like if I was to about to take someone's virginity I'd want to take them out on a date."
                     PC "Make it an absolute magical night, a perfect night..."
                     PC "One they would look back on fondly for the rest of their lives..."
@@ -223,6 +238,7 @@ label Day1SchoolMorningSexTalkCont:
                     BecThoughts "Mmmmm... I'm starting to get a bit wet just hearing this..."
                     #Show Bec Getting wet
                     #Lust is Increased Significantly
+                    $ Bec_Lust += 5
                     PC "I'd look into her eyes and ask what she wants..."
                     PC "...and if she wants me to continue I'd give her a night to remember, focusing 100\% on her wants, needs and desires."
                     BecThoughts "Noooooo... Don't stop talking, that was fucking hot!"
@@ -230,19 +246,24 @@ label Day1SchoolMorningSexTalkCont:
                     BecThoughts "Why'd he have to stop? I'm so going to have to masturbate over this conversation tonight."
                     menu:
                         "\"Well maybe we can make it a reality some day?\"":
-                            if Bec2_Flag:
+                            if Bec_Lust >9 :
                                 Bec "Hmmm.. We'll just have to wait and see..."
                                 jump Day1SchoolMorningSexTalk
                                 #Lust is Increased
+                                $ Bec_Lust += 2
                             else:
                                 Bec "Wow! You can't just say that!"
                                 Bec "I let you get way with a lot of shit but that's going over the line."
                                 #Affection & Lust are decreased
+                                $ Bec_Lust -= 1
+                                $ Bec_Affection -= 1
                                 #Ends the conversation.
+                                jump Day1SchoolMorningEnd
                         "\"Then I hope that one day you get that, no matter who ends up being the lucky guy.\"":
                             Bec "Thanks me too..."
                             #Affection is Increased
-                            if Bec2_Flag:
+                            $ Bec_Affection += 1
+                            if Bec_Lust >= 9:
                                 Bec "The way you described that was pretty hot by the way..."
                                 PC "Haha. Thanks."
                                 menu:
@@ -256,6 +277,8 @@ label Day1SchoolMorningSexTalkCont:
                                             "Rebecca gives you her phone number."
                                             Bec "Maybe text me tonight?"
                                             #Affection & Lust Increased
+                                            $ Bec_Lust += 1
+                                            $ Bec_Affection += 1
                                             $ BecSexts_Flag = True
                                             jump Day1SchoolMorningSexTalk
                                         else:
@@ -263,11 +286,14 @@ label Day1SchoolMorningSexTalkCont:
                                             "Rebecca gives you her phone number."
                                             Bec "Maybe text me tonight?"
                                             #Lust Increased
+                                            $ Bec_Lust += 1
                                             $ BecSexts_Flag = True
                                             jump Day1SchoolMorningSexTalk
                                     "\"Maybe one day we'll get to live out the fantasy...\"":
                                         Bec "Maybe we will..."
                                         #Affection & Lust Increased
+                                        $ Bec_Lust += 1
+                                        $ Bec_Affection += 1
                                         jump Day1SchoolMorningSexTalk
                             else:
                                 jump Day1SchoolMorningSexTalk
@@ -280,19 +306,32 @@ label Day1SchoolMorningSexTalkCont:
                         Bec "Haha. Know anyone?"
                         menu:
                             "\"You're looking at him\"":
-                                Bec "Wooooh! Were'd that come from."
-                                Bec "Not cool man."
-                                #Affection is decreased
-                                #Ends the conversation.
+                                if Bec_Affection >= 5:
+                                    Bec "Ohh and he's cute too..."
+                                    "We both laugh softly."
+                                    #Affection & Lust Increased
+                                    $ Bec_Lust += 1
+                                    $ Bec_Affection += 1
+                                    jump Day1SchoolMorningSexTalk
+                                else:
+                                    Bec "Wooooh! Were'd that come from."
+                                    Bec "Not cool man."
+                                    #Affection is decreased
+                                    $ Bec_Affection -= 1
+                                    #Ends the conversation.
+                                    jump Day1SchoolMorningEnd
                             "\"I might know a guy who'd treat you right...\"":
                                 Bec "Ohh really? Is he nearby?"
                                 PC "Ohh he's close, real close."
                                 #Affection & Lust are Increased
+                                $ Bec_Lust += 1
+                                $ Bec_Affection += 1
                                 jump Day1SchoolMorningSexTalk
                             "\"Any guy would be lucky to have you\"":
                                 "She blushes"
                                 Bec "Thanks."
                                 #Affection is Increased
+                                $ Bec_Affection += 1
                                 jump Day1SchoolMorningSexTalk
                     "Say Nothing":
                         Bec "You don't think thinking of someone else during sex is wrong?"
@@ -300,10 +339,28 @@ label Day1SchoolMorningSexTalkCont:
                         #Menu
         "\"Hang on, He's pressuring you into Sex?\"":
             PC "Hang on, He's pressuring you into Sex?"
+            $ Bec2_Flag = True
+
 
 label Day1SchoolMorningEnd:
     "The Current End"
 
+label Day1Homeroom:
+    "I enter into homeroom, keen to find out my schedule for the year."
+    #Talk with Steph about walking hom togteher and your car getting wrecked outside your own home
 
+label Day1P1Maths:
+    #Mathsbuddy & Texts from Hayley?
 
+label Day1SchoolAssembly:
+    #Would have English Class with Kayla
+    #The School Play is announced
+    #Charlotte and Eloise ask if you're going to join. Bec will also.
+    #Charlotte also invites you to Her and Eloise's Join Party where they will be legal.
+    #She says her current ID say's shes 18 or over (Show fake ID) - No Sex with until after the party.
+
+label Day1Lunch:
+    "??"
+
+    
 return
